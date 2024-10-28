@@ -1,0 +1,491 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$colorOrange: #ff8310;
+$colorGray100: #cccccc;
+$colorGray300: #393939;
+$colorGray600: #232323;
+$colorGray700: #22232c;
+$colorGray800: #191a20;
+$base: 10px;
+
+* {
+  font-family: "Poppins";
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-width: 100vw;
+  min-width: 100vh;
+  background-color: $colorGray600;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header {
+  display: flex;
+  min-height: $base * 10;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: $base * 4;
+  z-index: 9;
+  border-bottom: 1px solid $colorGray100;
+}
+
+footer {
+  margin-bottom: auto;
+  padding-block: $base * 2.5;
+  p {
+    font-size: $base * 1.4;
+    text-align: center;
+    color: $colorGray300;
+  }
+}
+.loading-cards {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  padding-inline: $base * 12;
+  padding-block: $base * 14;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $base * 4;
+  padding-inline: $base * 12;
+  padding-block: $base * 14;
+}
+
+.noscroll-list {
+  overflow-y: hidden;
+}
+
+.card-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: $base;
+  padding: $base * 3;
+  border-radius: $base * 0.8;
+  background-color: $colorGray800;
+  box-shadow: 0px 0px 2px black;
+  color: white;
+
+  div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: $base;
+
+    .card-product-img {
+      border-radius: $base * 0.8;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: $base;
+
+      p:first-child {
+        font-size: $base * 1.6;
+      }
+
+      p:last-child {
+        font-size: $base * 1.2;
+        text-align: justify;
+        color: $colorGray100;
+      }
+    }
+  }
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: $base * 2;
+
+    div:first-child {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: $base * 1;
+    }
+
+    .price-unlocked {
+      text-align: center;
+      padding-block: $base * 2;
+      border-radius: $base * 0.8;
+      transition-duration: 0.15s;
+      background-color: $colorOrange;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.226);
+      transition-duration: 0.15;
+
+      &:hover {
+        transform: scale(1.03);
+        background-color: $colorGray300;
+        transition-duration: 0.15s;
+        cursor: pointer;
+      }
+    }
+
+    .price-locked {
+      text-align: center;
+      padding-block: $base * 2;
+      border-radius: $base * 0.8;
+      transition-duration: 0.15s;
+      background-color: $colorGray300;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.226);
+      transition-duration: 0.15;
+
+      &:hover {
+        transform: scale(1.03);
+        background-color: $colorGray300;
+        transition-duration: 0.15s;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.search-more-button {
+  display: flex;
+  justify-content: center;
+  grid-column: span 4;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: $base;
+
+    div:first-child {
+      width: $base * 40;
+      min-height: $base;
+      background: $colorGray300;
+      border-radius: $base * 8;
+      position: relative;
+
+      .loading-animation {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          $colorOrange,
+          rgba(255, 130, 16, 0.5),
+          $colorGray300
+        );
+        background-size: 200% 100%;
+        animation: loadingPulse 1.5s ease-in-out infinite;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: $base * 8;
+      }
+
+      @keyframes loadingPulse {
+        0% {
+          background-position: 0% 50%;
+          opacity: 0.2;
+        }
+        50% {
+          background-position: 100% 50%;
+          opacity: 1;
+        }
+        100% {
+          background-position: 0% 50%;
+          opacity: 0.2;
+        }
+      }
+
+      .loading-bar {
+        height: 10px;
+        background-color: $colorOrange;
+        border-radius: $base * 8;
+        transition: width 0.5s ease;
+      }
+
+      .percent-100 {
+        width: 100%;
+        height: 100%;
+        background-color: $colorOrange;
+      }
+    }
+
+    .buttonHasNext {
+      display: flex;
+      justify-content: center;
+      width: $base * 40;
+      padding-block: $base * 3;
+      border-radius: $base * 0.8;
+      cursor: pointer;
+      background-color: $colorOrange;
+      color: white;
+      transition-duration: 0.15s;
+      border: none;
+
+      &:hover {
+        background-color: $colorGray300;
+        transition-duration: 0.15s;
+      }
+    }
+
+    .buttonNotHasNext {
+      display: flex;
+      justify-content: center;
+      width: $base * 40;
+      padding-block: $base * 3;
+      border-radius: $base * 0.8;
+      background-color: $colorGray300;
+      color: white;
+      border: none;
+    }
+  }
+}
+
+.bag-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $base;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  p {
+    margin-top: $base * 0.5;
+    font-size: 20px;
+    color: white;
+  }
+}
+
+.cart-open {
+  top: 0;
+  right: 0;
+  transition: transform 1s ease;
+  box-shadow: -20px 0px 40px rgba(0, 0, 0, 0.473);
+  transform: translateX(0);
+}
+
+.cart-close {
+  top: 0;
+  right: 0;
+  transition: transform 1s ease;
+  transform: translateX(100%);
+  box-shadow: -20px 0px 40px rgba(0, 0, 0, 0);
+}
+
+.cart-sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  max-width: $base * 50;
+  min-width: $base * 50;
+  height: 100vh;
+  padding-inline: $base * 3;
+  background-color: $colorGray600;
+  z-index: 10;
+
+  .header-cart {
+    display: flex;
+    align-items: center;
+    gap: $base * 3;
+    padding-block: $base * 3;
+    flex-shrink: 0;
+
+    .arrow-close {
+      transform: rotate(360deg);
+      transition-duration: 0.7s;
+    }
+
+    .arrow-open {
+      transform: rotate(180deg);
+      transition-duration: 0.7s;
+    }
+
+    button {
+      width: 40px;
+      height: 40px;
+      background-color: $colorGray300;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.267);
+      border: none;
+      border-radius: 50px;
+
+      &:hover {
+        cursor: pointer;
+        box-shadow: none;
+      }
+    }
+
+    p {
+      font-size: $base * 2.4;
+      color: white;
+    }
+  }
+
+  .scroll-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-block: $base * 2;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .container-products {
+      display: flex;
+      flex-direction: column;
+      gap: $base * 2;
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        gap: $base * 3;
+        padding: $base * 2;
+        background-color: $colorGray300;
+        border-radius: $base * 0.8;
+
+        .container-product-img-cart {
+          width: 35%;
+
+          .card-img-cart {
+            border-radius: $base * 0.8;
+          }
+        }
+
+        .container-product-info-cart {
+          display: flex;
+          flex-direction: column;
+          gap: $base;
+          width: 65%;
+
+          .product-title {
+            font-size: $base * 2.4;
+            color: white;
+          }
+
+          .product-description {
+            font-size: $base * 1;
+            color: white;
+          }
+
+          .container-price-cart {
+            display: flex;
+            gap: $base;
+
+            p {
+              color: white;
+            }
+          }
+
+          .container-qtd-cart {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .product-qtd {
+              width: fit-content;
+              display: flex;
+
+              p {
+                text-align: center;
+                min-width: 20%;
+                border: none;
+                padding: $base;
+                color: white;
+                background-color: $colorGray600;
+              }
+
+              button {
+                border: none;
+                padding: $base;
+                color: white;
+                background-color: $colorGray600;
+
+                &:first-child {
+                  border-radius: $base 0 0 $base;
+
+                  &:hover {
+                    background-color: $colorGray800;
+                    cursor: pointer;
+                  }
+                }
+
+                &:last-child {
+                  border-radius: 0 $base $base 0;
+
+                  &:hover {
+                    background-color: $colorGray800;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+
+            .container-delete-cart {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: $base * 0.6;
+              border-radius: 100%;
+              border: none;
+              transition-duration: 0.15s;
+              background-color: $colorOrange;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.397);
+
+              &:hover {
+                background-color: $colorGray600;
+                transition-duration: 0.15s;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .container-payment {
+    display: flex;
+    flex-direction: column;
+    gap: $base;
+    flex-shrink: 0;
+
+    .total-price-cart {
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        font-size: $base * 2.4;
+        color: white;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: $base;
+      }
+    }
+
+    .button-payment-cart {
+      margin-block: $base * 2;
+      padding-block: $base * 3;
+      font-size: $base * 1.6;
+      border-radius: $base * 0.8;
+      border: none;
+      transition-duration: 0.15s;
+      background-color: $colorOrange;
+      color: white;
+
+      &:hover {
+        padding-block: $base * 3;
+        border-radius: $base * 0.8;
+        cursor: pointer;
+        transform: scale(1.03);
+        background-color: $colorGray300;
+        transition-duration: 0.15s;
+        border: none;
+      }
+    }
+  }
+}
