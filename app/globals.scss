@@ -12,12 +12,14 @@ $base: 10px;
   font-family: "Poppins";
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-  min-width: 100vw;
-  min-width: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background-color: $colorGray600;
+  overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
@@ -53,10 +55,12 @@ footer {
 
 .list-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: $base * 4;
-  padding-inline: $base * 12;
+  padding-inline: $base * 4;
   padding-block: $base * 14;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .noscroll-list {
@@ -73,6 +77,9 @@ footer {
   background-color: $colorGray800;
   box-shadow: 0px 0px 2px black;
   color: white;
+  max-width: 350px;
+  margin: 0 auto;
+  width: 100%;
 
   div:first-child {
     display: flex;
@@ -80,6 +87,10 @@ footer {
     gap: $base;
 
     .card-product-img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
       border-radius: $base * 0.8;
     }
 
@@ -485,6 +496,101 @@ footer {
         background-color: $colorGray300;
         transition-duration: 0.15s;
         border: none;
+      }
+    }
+  }
+}
+
+// Mobile styles
+@media (max-width: 600px) {
+  .list-item {
+    display: flex;
+    flex-direction: column;
+    gap: $base * 2;
+    padding: $base * 2;
+    margin: 0;
+    width: 100%;
+  }
+
+  .card-product {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+
+    div:first-child {
+      .card-product-img {
+        max-height: 200px;
+        width: 100%;
+      }
+    }
+  }
+
+  .search-more-button {
+    width: 100%;
+    padding: $base * 2;
+
+    div {
+      width: 100%;
+
+      div:first-child {
+        width: 100%;
+      }
+
+      .buttonHasNext,
+      .buttonNotHasNext {
+        width: 100%;
+      }
+    }
+  }
+
+  header {
+    padding: $base * 2;
+    width: 100%;
+  }
+
+  .cart-sidebar {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+}
+
+// Tablet styles
+@media (min-width: 601px) and (max-width: 1024px) {
+  .list-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // Força 2 colunas
+    gap: $base * 3;
+    padding: $base * 4;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card-product {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+
+    div:first-child {
+      .card-product-img {
+        height: 250px;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .search-more-button {
+    grid-column: span 2; // Ajusta o botão para ocupar as duas colunas
+    width: 100%;
+    padding: $base * 2;
+
+    div {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+
+      div:first-child {
+        width: 100%;
       }
     }
   }

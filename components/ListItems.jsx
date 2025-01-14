@@ -1,4 +1,5 @@
 "use client";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { CardItem } from "./CardItem";
 
@@ -57,45 +58,43 @@ export function CardList() {
           )}
           <div className="search-more-button">
             <div>
-              <>
-                <div>
-                  {isFetchingNextPage ? (
-                    <div className="loading-animation"></div>
-                  ) : hasNextPage ? (
-                    <div
-                      className="loading-bar"
-                      style={{ width: getLoadingWidth(data.pages.length) }}
-                    ></div>
-                  ) : (
-                    <div className="percent-100"></div>
-                  )}
-                </div>
+              <div>
                 {isFetchingNextPage ? (
-                  <button
-                    className="buttonHasNext"
-                    onClick={() => fetchNextPage()}
-                    disabled={!hasNextPage || isFetchingNextPage}
-                  >
-                    Carregando mais...
-                  </button>
+                  <div className="loading-animation"></div>
                 ) : hasNextPage ? (
-                  <button
-                    className="buttonHasNext"
-                    onClick={() => fetchNextPage()}
-                    disabled={!hasNextPage || isFetchingNextPage}
-                  >
-                    Carregar mais
-                  </button>
+                  <div
+                    className="loading-bar"
+                    style={{ width: getLoadingWidth(data.pages.length) }}
+                  ></div>
                 ) : (
-                  <button
-                    className="buttonNotHasNext"
-                    onClick={() => fetchNextPage()}
-                    disabled={!hasNextPage || isFetchingNextPage}
-                  >
-                    Você já viu tudo
-                  </button>
+                  <div className="percent-100"></div>
                 )}
-              </>
+              </div>
+              {isFetchingNextPage ? (
+                <button
+                  className="buttonHasNext"
+                  onClick={() => fetchNextPage()}
+                  disabled={!hasNextPage || isFetchingNextPage}
+                >
+                  Carregando mais...
+                </button>
+              ) : hasNextPage ? (
+                <button
+                  className="buttonHasNext"
+                  onClick={() => fetchNextPage()}
+                  disabled={!hasNextPage || isFetchingNextPage}
+                >
+                  Carregar mais
+                </button>
+              ) : (
+                <button
+                  className="buttonNotHasNext"
+                  onClick={() => fetchNextPage()}
+                  disabled={!hasNextPage || isFetchingNextPage}
+                >
+                  Você já viu tudo
+                </button>
+              )}
             </div>
           </div>
         </>

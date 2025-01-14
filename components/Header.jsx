@@ -19,12 +19,13 @@ export function Header() {
   return (
     <>
       <header>
-        <div>
+        <div className="logo-container">
           <Image
             src="/images/starsoft.png"
             alt="Starsoft Logo"
-            width={100}
-            height={45}
+            width={80}
+            height={36}
+            priority
           />
         </div>
         <div className="cart">
@@ -32,8 +33,9 @@ export function Header() {
             <Image
               src="/images/bag.svg"
               alt="Icon bag"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
+              priority
             />
             <p>{products.length}</p>
           </button>

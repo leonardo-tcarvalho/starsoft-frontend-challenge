@@ -28,13 +28,15 @@ export const CardItem = ({ id, imageSrc, name, description, price }) => {
           className="card-product-img"
           src={imageSrc}
           alt={name}
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           layout="responsive"
+          objectFit="contain"
+          priority
         />
-        <div>
-          <p>{name}</p>
-          <p>{description}</p>
+        <div className="product-info">
+          <p className="product-name">{name}</p>
+          <p className="product-description">{description}</p>
         </div>
       </div>
       <div>
